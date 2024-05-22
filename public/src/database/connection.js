@@ -1,11 +1,10 @@
-const mongoose = require('mongoose');
+const mysql = require('mysql2');
 
-const connection = () => {
-  const mongoURI = 'tu_cadena_de_conexion_a_mongodb'; // Asegúrate de reemplazar esto con tu cadena de conexión real
+const pool = mysql.createPool({
+  host: 'localhost', // Cambia esto según sea necesario
+  user: 'root',
+  password: 'tu_contraseña',
+  database: 'gatito_leon'
+});
 
-  mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Conexión a MongoDB exitosa'))
-    .catch((err) => console.error('Error conectando a MongoDB', err));
-};
-
-module.exports = connection;
+module.exports = pool.promise();

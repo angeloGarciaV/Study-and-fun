@@ -1,62 +1,48 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const path = require('path');
+const db = require('./database/connection');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware para parsear JSON y servir archivos estáticos
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.static('../public'));
 
-// Conectar a MongoDB
-mongoose.connect('tu_cadena_de_conexion_a_mongodb', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false
-});
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'Error de conexión a MongoDB:'));
-db.once('open', function() {
-  console.log("Conectado a MongoDB exitosamente!");
-});
-
-// Definir el esquema y modelo para el estado del juego
-const gameSchema = new mongoose.Schema({
-  stage: Number,
-  state: String
-});
-
-const Game = mongoose.model('Game', gameSchema);
-
-// Rutas
-app.get('/api/gamestate/:stage', async (req, res) => {
-  try {
-    const stage = await Game.findOne({ stage: req.params.stage });
-    res.json(stage);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
-
+// Crear un estado inicial del juego
 app.post('/api/gamestate', async (req, res) => {
+  const { stage, state } = req.body;
+
   try {
-    const newGameState = new Game(req.body);
-    const result = await newGameState.save();
-    res.status(201).json(result);
+    const [rows] = await db.query('INSERT INTO game_state (stage, state) VALUES (?, ?)', [stage, state]);
+    res.status(201).json({ id: rows.insertId, stage, state });
   } catch (error) {
-    res.status(400).send(error);
+    res.status(500).json({ error: error.message });
   }
 });
 
-app.put('/api/gamestate/:id', async (req, res) => {
+// Obtener el estado del juego para una etapa específica
+app.get('/api/gamestate/:stage', async (req, res) => {
+  const stage = req.params.stage;
+
   try {
-    const updatedGame = await Game.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.json(updatedGame);
+    const [rows] = await db.query('SELECT * FROM game_state WHERE stage = ?', [stage]);
+    if (rows.length === 0) return res.status(404).json({ error: 'Estado no encontrado para esta etapa' });
+    res.json(rows[0]);
   } catch (error) {
-    res.status(400).send(error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Actualizar un estado específico del juego
+app.put('/api/gamestate/:id', async (req, res) => {
+  const id = req.params.id;
+  const { stage, state } = req.body;
+
+  try {
+    await db.query('UPDATE game_state SET stage = ?, state = ? WHERE id = ?', [stage, state, id]);
+    res.json({ id, stage, state });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 

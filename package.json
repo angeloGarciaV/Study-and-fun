@@ -1,5 +1,5 @@
 {
-    "name": "Study and fun",
+    "name": "study-and-fun",
     "version": "1.0.0",
     "description": "Backend para el juego",
     "main": "src/server.js",
