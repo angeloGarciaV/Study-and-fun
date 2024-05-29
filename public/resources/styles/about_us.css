@@ -1,0 +1,13 @@
+@import url(./styles.css);
+
+.portrait_container{
+  display: flex;
+  margin: 1rem;
+  width: 650px;
+}
+.portrait_info{
+  margin: 0 1rem;
+}
+.portrait img {
+  width: 300px;
+}
