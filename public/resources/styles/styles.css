@@ -13,12 +13,18 @@
   font-family: "brandon-grotesque", sans-serif;
 }
 
+body {
+  width: 100vw;
+  background-image: url('../images/BG_Lines.png');
+} 
+
 h1{
   font-family:"basenji-variable";
 }
 
 .header_nav{
   display: flex;
+  width: 100vw;
   background-color: var(--sfBlue);
   font-size: 2rem;
   font-family: 'basenji-variable', sans-serif;
@@ -37,7 +43,7 @@ a{
   text-decoration: none;
 }
 
-.nav_logo{
+.nav_logo {
   margin: 1rem;
   width: 200px;
   height: 35px;
