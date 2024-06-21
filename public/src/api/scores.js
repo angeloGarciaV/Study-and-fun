@@ -1,10 +1,20 @@
 const express = require('express');
+const { body, validationResult } = require('express-validator');
 const db = require('../database/connection');
+const authenticateToken = require('../middleware/authenticateToken');
 const router = express.Router();
 
 // Crear o actualizar una puntuación
-router.post('/', async (req, res) => {
+router.post('/', authenticateToken, [
+  body('user_id').isInt().withMessage('User ID must be an integer'),
+  body('score').isInt().withMessage('Score must be an integer')
+], async (req, res) => {
   const { user_id, score } = req.body;
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
 
   try {
     const [existing] = await db.query('SELECT * FROM scores WHERE user_id = ?', [user_id]);
@@ -21,7 +31,7 @@ router.post('/', async (req, res) => {
 });
 
 // Obtener la puntuación de un usuario específico
-router.get('/:user_id', async (req, res) => {
+router.get('/:user_id', authenticateToken, async (req, res) => {
   const user_id = req.params.user_id;
 
   try {
