@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const db = require('../database/dbConfig');
+const db = require('../database/');
 
 // Obtener todas las puntuaciones
 router.get('/', async (req, res) => {

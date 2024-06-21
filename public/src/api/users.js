@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
-const db = require('../database/dbConfig');
+const db = require('../database/');
 
 router.post('/register',
     body('username').isLength({ min: 3 }),
