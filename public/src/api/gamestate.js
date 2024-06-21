@@ -1,9 +1,20 @@
 const express = require('express');
+const { body, validationResult } = require('express-validator');
 const db = require('../database/connection');
+const authenticateToken = require('../middleware/authenticateToken');
 const router = express.Router();
 
 // Crear un estado inicial del juego
-router.post('/', async (req, res) => {
+router.post('/', authenticateToken, [
+  body('user_id').isInt().withMessage('User ID must be an integer'),
+  body('stage').isInt().withMessage('Stage must be an integer'),
+  body('state').isString().withMessage('State must be a string')
+], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const { user_id, stage, state } = req.body;
 
   try {
@@ -15,7 +26,7 @@ router.post('/', async (req, res) => {
 });
 
 // Obtener el estado del juego para una etapa específica de un usuario
-router.get('/:user_id/:stage', async (req, res) => {
+router.get('/:user_id/:stage', authenticateToken, async (req, res) => {
   const { user_id, stage } = req.params;
 
   try {
@@ -28,9 +39,17 @@ router.get('/:user_id/:stage', async (req, res) => {
 });
 
 // Actualizar un estado específico del juego
-router.put('/:id', async (req, res) => {
+router.put('/:id', authenticateToken, [
+  body('stage').isInt().withMessage('Stage must be an integer'),
+  body('state').isString().withMessage('State must be a string')
+], async (req, res) => {
   const id = req.params.id;
   const { stage, state } = req.body;
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
 
   try {
     await db.query('UPDATE game_state SET stage = ?, state = ? WHERE id = ?', [stage, state, id]);
