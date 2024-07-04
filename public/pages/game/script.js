@@ -3,12 +3,12 @@ const stages = [
     {
         text: "Había un g_tito pequeño, muy bonito de color gris y ojos negros que se encontraba aburrido en su casa. Su casa era un hermoso chalet color blanco en la cima de la montaña. Un día decidió salir a las montañas para ver si encontraba algo interesante que le quitara el aburrimiento, se adentro tanto que llegó a una jungla.",
         vowels: "A",
-        sum: "0 + 1 = 1"
+        sum: "0 + 1 = ?"
     },
     {
         text: "Al entr_r a la jungla miró hacia atrás para r_cordar el camino a su casa, enseguida que entró vio muchos animales, uno de ellos fue un León, le llamó mucho la atención y decidió acercarse un poco más para poder verlo mejor.",
         vowels: "A, E",
-        sum: "1 + 1 = 2"
+        sum: "1 + 1 = ?"
     },
     // Añadir el resto de las etapas aquí
 ];

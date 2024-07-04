@@ -7,7 +7,19 @@
   align-items: center;
   width: 100vw;
 }
-
+.game_link{
+  display: flex;
+  background-size: 600px 500px;
+  width: 600px;
+  height: 500px;
+  color: white;
+  background-image:url(../images/yoal-desurmont-jqgsM3B9Fpo-unsplash.jpg);
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  text-align: center;
+  border-radius: 20px;
+}
 .home_heroImg{
   margin: 1rem;
   width: 50%;
