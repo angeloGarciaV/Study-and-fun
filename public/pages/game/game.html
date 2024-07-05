@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>El gatito que quería ser León</title>
+<link rel="stylesheet" href="../../resources/styles/styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../public/icons/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <header>
+        <div class="header_nav">
+            <a href="../../index.html"><img src="../../resources/images/BannerLogo_white.png" alt="" class="nav_logo"></a>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">Hogar</a></li>
+                    <li><a href="#">Juego</a></li>
+                    <li><a href="../about_us/about_us.html">Sobre Nosotros</a></li>
+                </ul>
+            </nav>
+    </div>
+    </header>
+<div id="game">
+    <h1 class="game_title">El gatito que quería ser León</h1>
+    <div id="instructions">
+        <p>Completa las vocales faltantes y resuelve la suma para avanzar en la historia.</p>
+    </div>
+    <h2 id="stage-title">Etapa 1</h2>
+    <p id="story">
+        <!-- Texto inicial de la historia -->
+    </p>
+    <label for="vowel">Introduce la vocal faltante: </label>
+    <input type="text" id="vowel">
+    <button onclick="checkAnswer()">Comprobar</button>
+
+    <h3 id="math-question"></h3>
+    <input type="number" id="sum">
+    <button onclick="checkSum()">Comprobar Suma</button>
+
+    <p id="feedback"></p>
+    <button id="next-stage" style="display:none;" onclick="nextStage()">Siguiente Etapa</button>
+    <button id="prev-stage" style="display:none;" onclick="prevStage()">Etapa Anterior</button>
+    <div id="progress"></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+

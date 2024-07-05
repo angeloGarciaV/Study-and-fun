@@ -15,16 +15,35 @@
 }
 
 .aboutUs_portraitContainer{
+.aboutUs_body{
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  width: 100vw;
+}
+
+.aboutUs_main{
+  margin: 1rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.aboutUs_portraitContainer{
   display: flex;
   margin: 1rem;
   width: 500px;
 }
 
 .aboutUs_portraitInfo{
+
+.aboutUs_portraitInfo{
   margin: 0 1rem;
   font-size: 1.5rem;
   color: var(--sfBlue);
 }
+
+.aboutUs_portrait img {
 
 .aboutUs_portrait img {
   width: 300px;
@@ -48,4 +67,16 @@ svg path{
 }
 svg path:hover{
   fill: hsl(353, 100%, 40%);
+}
+
+.aboutUs_heroSection {
+  align-self: center;
+}
+
+#about{
+font-size: 4rem;
+top: 75px;
+left: 143px;
+position: relative;
+color: var(--sfBlue);
 }
