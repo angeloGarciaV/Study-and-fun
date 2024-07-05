@@ -1,0 +1,149 @@
+@import url('./styles.css');
+
+@font-face {
+  font-family: 'Super Boys';
+  src: url('../Fonts/Super\ Boys.ttf') format('truetype');
+}
+
+.home_heroSection{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 70vh;
+  background-color: white;
+  box-shadow: 0 5rem 50px white;
+  position:relative;
+  top: 0px;
+  
+}
+.home_heroSection h1{
+  font-size: 4rem;
+  position: relative;
+  top: -9rem;
+  left: 2rem;
+  /* color: var(--sfRed); */
+}
+
+.home_logo{
+  position: relative;
+  top: -2rem;
+  left: 1.6rem;
+}
+
+.game_link{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 4rem;
+  text-align: right;
+  border: 7px solid rgb(255, 174, 11);
+  border-radius: 144px;
+  position: relative;
+  z-index: 1;
+  top: -10rem;
+  left: 18rem;
+  width: 60rem;
+  flex-direction: column;
+  padding: 2.5rem 2.5rem 1rem 2.5rem;
+  background: #065600;
+  background: radial-gradient(ellipse farthest-side at left center, #065600 33%, #0A8900 100%);
+  box-shadow: 10px 6px black;
+}
+
+.game_link a{
+  cursor: pointer;
+  font-family: 'Super Boys';
+  margin: 1rem;
+  color: rgb(255, 174, 11);
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 1),
+  6px 6px 0px rgba(0, 0, 0, 1); 
+}
+
+.game_link h4{
+  font-family: 'Super Boys';
+  font-size: 3.8rem;
+  font-kerning: auto;
+  color: white;
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 1),
+  6px 6px 0px rgba(0, 0, 0, 1);
+}
+
+.GatitoRender{
+  position: absolute;
+  top: -.5rem;
+  height: 120%;
+  z-index: 10;
+}
+
+.features{
+  margin: auto 2rem;
+  padding: 2rem;
+  background-color: white;
+  border: 5px solid var(--sfBlue);
+  border-radius: 2%;
+  box-shadow: 10px 6px 30px black;
+}
+.features h1{
+  margin: 2rem 2rem 1rem 2rem;
+  font-size: 3rem;
+}
+
+.features img{
+  margin: 1rem 2rem 0 2rem;
+  width: 300px;
+}
+#feat1Img{
+  width: 500px;
+}
+
+.feat1, .feat2, .feat3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2rem;
+}
+.feat2{
+  flex-direction: row-reverse;
+}
+#uc{
+  font-weight: bold;
+  font-size: 3rem;
+  color: red;
+  position: relative;
+  left: 35rem;
+  rotate: 30deg;
+}
+
+.aboutUs{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2rem;
+  padding: 2rem 0;
+  background-color: hsla(0, 0%, 100%, 0.5);
+  border-radius: 2%;
+}
+#shortDesc{
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  width: 70rem;
+  border: 5px solid var(--sfBlue);
+  background-color: white;
+}
+.aboutUs_logo{
+  margin: 0 auto;
+}
+#ourGit{
+  padding: 1rem;
+  background-color: var(--sfBlue);
+  font-size: 3rem;
+  border: 5px solid hsl(201, 100%, 45%);
+}
+#ourGit:hover{
+  color: var(--sfRed);
+}

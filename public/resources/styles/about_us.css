@@ -1,13 +1,58 @@
 @import url(./styles.css);
 
-.portrait_container{
+.aboutUs_body{
   display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  width: 100vw;
+}
+
+.aboutUs_main{
+  margin: 1rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.aboutUs_portraitContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
   margin: 1rem;
-  width: 650px;
+  width: 500px;
 }
-.portrait_info{
+
+.portrait_items{
+  display: flex;
+  justify-content: space-around;
+}
+
+.aboutUs_portraitInfo{
   margin: 0 1rem;
+  font-size: 1.5rem;
+  color: var(--sfBlue);
 }
-.portrait img {
+
+.aboutUs_portrait img {
   width: 300px;
+  border-radius: 2%;
+}
+
+.aboutUs_heroSection {
+  align-self: center;
+}
+
+#about{
+font-size: 4rem;
+top: 75px;
+left: 143px;
+position: relative;
+color: var(--sfBlue);
+}
+
+svg path{
+  fill: var(--sfRed);
+}
+svg path:hover{
+  fill: hsl(353, 100%, 40%);
 }
